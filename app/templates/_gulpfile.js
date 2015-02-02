@@ -11,7 +11,7 @@ var livereload      = require('gulp-livereload');
 gulp.task('default', ['sass', 'js'], function() {
     livereload.listen();
     gulp.watch(
-        "src/sass/**/*.scss", ['sass']
+        "src/scss/**/*.scss", ['sass']
     );
     gulp.watch(
         "src/js/**/*.js", ['js']
@@ -28,11 +28,11 @@ gulp.task('csscomponents', function() {
         .pipe(rename(function(path) {
             path.extname = ".scss"
         }))
-        .pipe(gulp.dest('src/sass/vendor'));
+        .pipe(gulp.dest('src/scss/vendor'));
 });
 
 gulp.task('sass', ['csscomponents'], function() {
-    gulp.src(['src/sass/main.scss'])
+    gulp.src(['src/scss/main.scss'])
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({
