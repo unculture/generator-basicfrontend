@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var path = require('path');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
@@ -42,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath('_gulpfile.js'),
       this.destinationPath('gulpfile.js')
     );
-    this.fs.directory('boilerplate');
+    this.directory('src', 'src');
   },
 
   install: function () {

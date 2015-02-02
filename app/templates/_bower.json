@@ -1,14 +1,14 @@
 {
-  "name": "doodling",
+  "name": "",
   "version": "0.0.0",
-  "homepage": "https://github.com/unculture/doodling",
+  "homepage": "",
   "authors": [
-    "James Browne <jb@jamesbrowne.me>"
+    "James Browne <newlsetters@jamesbrowne.me>"
   ],
   "moduleType": [
     "node"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
   "ignore": [
     "**/.*",
