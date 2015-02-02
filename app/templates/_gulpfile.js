@@ -22,7 +22,7 @@ gulp.task('csscomponents', function() {
     // Copies CSS components src/vendor
     // Changes .css to a .scss extension
     // For SASS
-    gulp.src([
+    return gulp.src([
             'bower_components/normalize.css/normalize.css',
         ])
         .pipe(rename(function(path) {
@@ -32,7 +32,7 @@ gulp.task('csscomponents', function() {
 });
 
 gulp.task('sass', ['csscomponents'], function() {
-    gulp.src(['src/scss/main.scss'])
+    return gulp.src(['src/scss/main.scss'])
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({
@@ -47,7 +47,7 @@ gulp.task('sass', ['csscomponents'], function() {
 });
 
 gulp.task('js', function() {
-    gulp.src([
+    return gulp.src([
             'bower_components/jquery/dist/jquery.js',
             'src/js/partials/_helloworld.js'
         ])
