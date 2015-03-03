@@ -1,6 +1,7 @@
 .idea
+.DS_Store
+.vagrant
 node_modules
 bower_components
-dist/css
 dist/js
-.sass-cache
+dist/css

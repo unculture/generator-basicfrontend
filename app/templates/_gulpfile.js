@@ -7,6 +7,7 @@ var rename          = require ('gulp-rename');
 var concat          = require ('gulp-concat');
 var sourcemaps      = require('gulp-sourcemaps');
 var livereload      = require('gulp-livereload');
+var plumber         = require('gulp-plumber')
 
 gulp.task('default', ['sass', 'js'], function() {
     livereload.listen();
@@ -33,6 +34,17 @@ gulp.task('csscomponents', function() {
 
 gulp.task('sass', ['csscomponents'], function() {
     return gulp.src(['src/scss/main.scss'])
+        .pipe(plumber({
+            errorHandler: function(err) {
+                notify.onError({
+                    title: "Gulp",
+                    subtitle: "Failure",
+                    message: "Error in task 'sass'",
+                    sound: "Frog"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({
@@ -41,24 +53,40 @@ gulp.task('sass', ['csscomponents'], function() {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/css/'))
         .pipe(notify({
-            message: "Task 'sass' ran successfully"
+            title: "Gulp",
+            subtitle: "Success",
+            message: "Task 'sass' ran successfully",
+            sound: "Glass"
         }))
         .pipe(livereload());
 });
 
 gulp.task('js', function() {
     return gulp.src([
-            'bower_components/jquery/dist/jquery.js',
-            'src/js/partials/_helloworld.js'
+        'bower_components/jquery/dist/jquery.js',
+        'src/js/partials/_helloworld.js'
         ])
+        .pipe(plumber({
+            errorHandler: function(err) {
+                notify.onError({
+                    title: "Gulp",
+                    subtitle: "Failure",
+                    message: "Error in task 'js'",
+                    sound: "Frog"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(sourcemaps.init())
         .pipe(concat("main.js"))
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'))
         .pipe(notify({
-            message: "Task 'js' ran successfully"
+            title: "Gulp",
+            subtitle: "Success",
+            message: "Task 'js' ran successfully",
+            sound: "Glass"
         }))
         .pipe(livereload());
 });
-
