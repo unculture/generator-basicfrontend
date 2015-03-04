@@ -28,15 +28,15 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('bower.json')
     );
     this.fs.copy(
-      this.templatePath('editorconfig'),
+      this.templatePath('_editorconfig'),
       this.destinationPath('.editorconfig')
     );
     this.fs.copy(
-      this.templatePath('gitignore'),
+      this.templatePath('_gitignore'),
       this.destinationPath('.gitignore')
     );
     this.fs.copy(
-      this.templatePath('jshintrc'),
+      this.templatePath('_jshintrc'),
       this.destinationPath('.jshintrc')
     );
     this.fs.copy(
